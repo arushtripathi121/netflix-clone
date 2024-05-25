@@ -4,8 +4,9 @@ import { checkValidate } from '../utils/Validate';
 import { Icon } from 'react-icons-kit';
 import { eyeOff } from 'react-icons-kit/feather/eyeOff';
 import { eye } from 'react-icons-kit/feather/eye'
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from '../utils/Firebase';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
 
@@ -14,6 +15,11 @@ const LoginPage = () => {
   const [type, setType] = useState('password');
   const [icon, setIcon] = useState(eyeOff);
   const [ErrorMessage, setErrorMessage] = useState(null)
+  const navigate = useNavigate();
+  const email = useRef(null);
+  const password = useRef(null);
+  const name = useRef(null);
+
   const onButtonClick = () => {
     setIsSignIn(!isSignIn);
     console.log(isSignIn);
@@ -28,11 +34,6 @@ const LoginPage = () => {
       setType('password')
     }
   }
-
-
-  const email = useRef(null);
-  const password = useRef(null);
-  const name = useRef(null);
 
   const handleButtonClick = () => {
     const message = checkValidate(email.current.value, password.current.value);
@@ -49,13 +50,25 @@ const LoginPage = () => {
           // Signed up 
           const user = userCredential.user;
           // ...
+          updateProfile(auth.currentUser, {
+            displayName: name.current.value, photoURL: "https://img.freepik.com/free-vector/mysterious-mafia-man-smoking-cigarette_52683-34828.jpg?size=626&ext=jpg"
+          }).then(() => {
+            // Profile updated!
+            // ...
+            navigate('/browse');
+          }).catch((error) => {
+            // An error occurred
+            // ...
+            setErrorMessage(error.message);
+          });
           console.log(user);
+          
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
           // ..
-          setErrorMessage(errorCode +"-"+errorMessage)
+          setErrorMessage(errorCode + "-" + errorMessage)
           console.log(ErrorMessage);
         });
     }
@@ -69,11 +82,12 @@ const LoginPage = () => {
           const user = userCredential.user;
           // ...
           console.log(user);
+          navigate('/browse');
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          setErrorMessage(errorCode +"-"+errorMessage)
+          setErrorMessage(errorCode + "-" + errorMessage)
           console.log(ErrorMessage);
         });
     }
@@ -107,7 +121,7 @@ const LoginPage = () => {
           <button className=' rounded-sm bg-red-800  px-4 py-3 text-white' onClick={() => handleButtonClick()}>{isSignIn ? 'Sign up' : 'Sign in'}</button>
         </form>
         <span className='text-white font-light'>{isSignIn ? 'Already a user? ' : 'New to Netflix? '}<button onClick={() => onButtonClick()} className=' text-white font-bold'>{isSignIn ? 'Sign in now' : ' Sign up now'}</button></span>
-        <p className=' text-red-500 w-72'>{ErrorMessage? ErrorMessage : ''}</p>
+        <p className=' text-red-500 w-72'>{ErrorMessage ? ErrorMessage : ''}</p>
       </div>
     </div>
   )

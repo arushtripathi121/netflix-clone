@@ -1,3 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.body {
+    background-image: url('https://assets.nflxext.com/ffe/siteui/vlv3/a99688ca-33c3-4099-9baa-07a2e2acb398/ca15fd28-b624-4852-8bfe-9cdd5c88475d/IN-en-20240520-popsignuptwoweeks-perspective_alpha_website_large.jpg');
+    background-color: rgba(0, 0, 0, 0.65); /* Adjust the alpha value to control the darkness */
+    background-blend-mode: multiply; /* Blend the background image and color */
+}
+
+.signin-box{
+    background-color: rgba(3, 4, 8, 0.7);
+}
+
+.signin-box-input{
+    background-color: rgba(10, 12, 17, 0.8);
+}
+
+/* For browsers that support WebKit (like Chrome and Safari) */
+::-webkit-scrollbar {
+    width: 15px; /* Width of the scrollbar */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: white; /* Background color of the scrollbar track */
+
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: red; /* Color of the scrollbar thumb */
+    border-radius: 1px; /* Border radius of the thumb */
+    height: 40px;
+  }
+  

@@ -7,6 +7,8 @@ import { eye } from 'react-icons-kit/feather/eye'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from '../utils/Firebase';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addUser } from '../utils/userSlice';
 
 const LoginPage = () => {
 
@@ -19,6 +21,7 @@ const LoginPage = () => {
   const email = useRef(null);
   const password = useRef(null);
   const name = useRef(null);
+  const dispatch = useDispatch();
 
   const onButtonClick = () => {
     setIsSignIn(!isSignIn);
@@ -50,11 +53,14 @@ const LoginPage = () => {
           // Signed up 
           const user = userCredential.user;
           // ...
-          updateProfile(auth.currentUser, {
-            displayName: name.current.value, photoURL: "https://img.freepik.com/free-vector/mysterious-mafia-man-smoking-cigarette_52683-34828.jpg?size=626&ext=jpg"
+          updateProfile(user, {
+            displayName: name.current.value, 
+            photoURL: "https://img.freepik.com/free-vector/mysterious-mafia-man-smoking-cigarette_52683-34828.jpg?size=626&ext=jpg"
           }).then(() => {
             // Profile updated!
             // ...
+            const {uid, email, displayName, photoURL} = auth.currentUser;
+            dispatch(addUser({uid:uid, email:email, displayName:displayName, photoURL:photoURL}));
             navigate('/browse');
           }).catch((error) => {
             // An error occurred

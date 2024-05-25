@@ -24,10 +24,13 @@ const BrowseHeader = () => {
                 className=' w-36' />
             </Link>
 
-            <div className='flex gap-5 items-center'>
-                <img src={user.photoURL} alt="user icon" className='w-10' />
-                <button onClick={() => handleSignOut()} className=' bg-red-600 text-white font-semibold px-5 py-1 rounded-'>Sign out</button>
-            </div>
+            {user &&
+                <div className='flex gap-5 items-center'>
+                    <img src={user.photoURL} alt="user icon" className='w-10' />
+                    <button onClick={() => handleSignOut()} className=' bg-red-600 text-white font-semibold px-5 py-1 rounded-'>Sign out</button>
+                </div>
+            }
+
         </div>
     )
 }

@@ -1,22 +1,45 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import netflixLogo from './../Logos/Netflix-Logo.wine.svg'
 import { Link, useNavigate } from 'react-router-dom'
 import { signOut } from 'firebase/auth'
 import { auth } from '../utils/Firebase'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux';
+import { onAuthStateChanged } from 'firebase/auth';
+import { addUser, removeUser } from '../utils/userSlice';
 
 const BrowseHeader = () => {
+    const dispatch = useDispatch();
     const navigate = useNavigate()
     const user = useSelector(store => store.user)
     const handleSignOut = () => {
-        signOut(auth).then(() => {
-            // Sign-out successful.
-            navigate('/');
-        }).catch((error) => {
+        signOut(auth).then(() => {}).catch((error) => {
             // An error happened.
             navigate('/error');
         });
+
     }
+
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // User is signed in, see docs for a list of available properties
+                // https://firebase.google.com/docs/reference/js/auth.user
+                const { uid, email, displayName, photoURL } = user;
+                dispatch(addUser({ uid: uid, email: email, displayName: displayName, photoURL: photoURL })
+            
+            );    // ...
+                navigate('/browse') 
+            }
+            
+            else {
+                // User is signed out
+                // ...
+                dispatch(removeUser())
+                navigate('/')
+            }
+        });
+    }, [])
+
     return (
         <div className='flex justify-between px-20 pt-2 items-center'>
             <Link to={'/browse'}><img

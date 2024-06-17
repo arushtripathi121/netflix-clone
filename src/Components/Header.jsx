@@ -1,8 +1,10 @@
-import react from 'react';
+import react, { useEffect } from 'react';
 import netflixLogo from './../Logos/Netflix-Logo.wine.svg'
 import { Link } from 'react-router-dom';
 
 const Header = ({ signIn }) => {
+
+
     console.log('value of sign in is : ', signIn);
     return (
         <div className='flex justify-between items-center mx-40'>

@@ -20,9 +20,7 @@ const Browse = () => {
   return (
     <div className='browse h-screen'>
       <div><BrowseHeader /></div>
-
-      <div className='text-white'> 
-        
+      <div className='text-white'>     
       </div>
     </div>
   )

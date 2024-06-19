@@ -4,7 +4,7 @@ import { FaPlay } from "react-icons/fa";
 
 const VideoTitle = ({ title, overview }) => {
   return (
-    <div className='px-20 space-y-5'>
+    <div className='px-20 space-y-5 absolute'>
 
       <div className=' space-y-10'>
         <p className=' text-5xl font-bold mt-40'>{title}</p>

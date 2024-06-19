@@ -6,8 +6,10 @@ import MainContainer from './MainContainer'
 const Browse = () => {
   useNowPlayingHook();
   return (
-    <div className='browse h-screen'>
-      <div><BrowseHeader /></div>
+    <div className='h-screen relative'>
+      <div className='header-box absolute top-0 left-0 w-full'>
+        <BrowseHeader />
+      </div>
       
       <div className='text-white'>
         <MainContainer/>
@@ -17,3 +19,4 @@ const Browse = () => {
 }
 
 export default Browse;
+

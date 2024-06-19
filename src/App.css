@@ -23,6 +23,10 @@
   background-blend-mode: multiply; /* Blend the background image and color */
 }
 
+.header-box{
+  background-color: rgba(3, 4, 8, 0.7);
+}
+
 /* For browsers that support WebKit (like Chrome and Safari) */
 ::-webkit-scrollbar {
     width: 15px; /* Width of the scrollbar */

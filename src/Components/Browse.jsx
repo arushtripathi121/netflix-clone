@@ -1,22 +1,21 @@
-import React  from 'react'
-import BrowseHeader from './BrowseHeader'
+import React from 'react'
 import useNowPlayingHook from '../Hooks/useNowPlayingHook'
 import MainContainer from './MainContainer'
+import BrowseHeader from './BrowseHeader';
 
 const Browse = () => {
   useNowPlayingHook();
   return (
-    <div className='h-screen relative'>
-      <div className='header-box absolute top-0 left-0 w-full'>
+    <div className='relative'>
+      <div className='absolute top-0 left-0  w-full bg-gradient-to-b from-black to-transparent'>
         <BrowseHeader />
       </div>
-      
-      <div className='text-white'>
-        <MainContainer/>
+      <div className='mt'>
+        <MainContainer />
       </div>
     </div>
+
   )
 }
 
 export default Browse;
-

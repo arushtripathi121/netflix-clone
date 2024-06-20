@@ -1,11 +1,11 @@
 import React from 'react'
 import { AiOutlineExclamationCircle } from 'react-icons/ai';
 import { FaPlay } from "react-icons/fa";
+import BrowseHeader from './BrowseHeader';
 
 const VideoTitle = ({ title, overview }) => {
   return (
-    <div className='px-20 space-y-5 absolute'>
-
+    <div className=' absolute px-20 space-y-5 mt-20 w-full aspect-video text-white bg-gradient-to-b from-transparent to-black'>
       <div className=' space-y-10'>
         <p className=' text-5xl font-bold mt-40'>{title}</p>
         <p className='w-96'>{overview}</p>

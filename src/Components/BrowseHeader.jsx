@@ -12,7 +12,7 @@ const BrowseHeader = () => {
     const navigate = useNavigate()
     const user = useSelector(store => store.user)
     const handleSignOut = () => {
-        signOut(auth).then(() => {}).catch((error) => {
+        signOut(auth).then(() => { }).catch((error) => {
             // An error happened.
             navigate('/error');
         });
@@ -26,11 +26,11 @@ const BrowseHeader = () => {
                 // https://firebase.google.com/docs/reference/js/auth.user
                 const { uid, email, displayName, photoURL } = user;
                 dispatch(addUser({ uid: uid, email: email, displayName: displayName, photoURL: photoURL })
-            
-            );    // ...
-                navigate('/browse') 
+
+                );    // ...
+                navigate('/browse')
             }
-            
+
             else {
                 // User is signed out
                 // ...
@@ -41,7 +41,7 @@ const BrowseHeader = () => {
     }, [])
 
     return (
-        <div className='flex justify-between px-20 pt-2 items-center'>
+        <div className='flex px-20 justify-between'>
             <Link to={'/browse'}><img
                 src={netflixLogo}
                 className=' w-36' />

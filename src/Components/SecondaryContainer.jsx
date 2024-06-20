@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux';
+import GetMoviesByPopularityHook from '../Hooks/getMoviesByPopularityHook';
+import PopularMovies from './PopularMovies';
 
 const SecondaryContainer = () => {
+  GetMoviesByPopularityHook();
 
-    const movies = useSelector(store => store.movies?.nowPlayingMovies);
   return (
     <div>
-      this is the secondary container
+      <PopularMovies/>
     </div>
   )
 }

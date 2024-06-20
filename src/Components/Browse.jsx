@@ -10,7 +10,7 @@ const Browse = () => {
       <div className='absolute top-0 left-0  w-full bg-gradient-to-b from-black to-transparent'>
         <BrowseHeader />
       </div>
-      <div className='mt'>
+      <div className=''>
         <MainContainer />
       </div>
     </div>

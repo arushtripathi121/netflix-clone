@@ -15,7 +15,7 @@ const Header = ({ signIn }) => {
 
             <Link to={'/login'}>
             {signIn  ?
-                <button className='rounded-lg bg-red-600 px-4 py-1 text-white font-semibold'>Sign In</button>
+                <button className='rounded-lg bg-red-600 w-20 h-10 text-white font-semibold'>Sign In</button>
                 : ''}
             </Link>
         </div>

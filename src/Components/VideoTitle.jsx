@@ -5,25 +5,26 @@ import SecondaryContainer from './SecondaryContainer';
 
 const VideoTitle = ({ title, overview }) => {
   return (
-    <div className="absolute space-y-5 mt-56 text-white w-full bg-gradient-to-b from-transparent to-black">
-      <div className='px-20 space-y-5'>
-        <p className='text-5xl font-bold'>{title}</p>
-        <p className='w-2/5'>{overview}</p>
+    <div className="absolute space-y-5 mt-48 text-white w-full bg-gradient-to-b from-transparent to-black">
+      <div className='px-4 sm:px-8 md:px-12 lg:px-20 space-y-2'>
+        <p className='text-3xl sm:text-2xl md:text-3xl font-bold'>{title}</p>
+        <p className='text-base sm:text-lg md:text-xl w-3/6'>{overview}</p>
       </div>
 
-      <div className='px-20 flex flex-row gap-5 text-xl'>
-        <button className='flex flex-row items-center gap-3 bg-white text-black px-5 py-3 rounded-lg font-semibold transition duration-300 ease-in-out hover:bg-gray-300'>
-          <FaPlay /> Play
+      <div className='px-4 sm:px-8 md:px-12 lg:px-20 flex flex-col sm:flex-row gap-3 sm:gap-5 text-base sm:text-xl'>
+        <button className='flex items-center gap-2 bg-white text-black px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold transition duration-300 ease-in-out hover:bg-gray-300'>
+          <FaPlay /> <span className="hidden sm:inline">Play</span>
         </button>
-        <button className='flex flex-row items-center gap-3 bg-gray-700 text-white px-5 py-3 rounded-lg font-semibold transition duration-300 ease-in-out hover:bg-gray-600'>
-          <AiOutlineExclamationCircle /> More Info
+        <button className='flex items-center gap-2 bg-gray-700 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold transition duration-300 ease-in-out hover:bg-gray-600'>
+          <AiOutlineExclamationCircle /> <span className="hidden sm:inline">More Info</span>
         </button>
       </div>
 
-      <div className="mt-5 w-screen">
+      <div className="mt-2 px-4 sm:px-0">
         <SecondaryContainer />
       </div>
     </div>
+
   );
 };
 

@@ -22,7 +22,7 @@ const BrowseHeader = () => {
 
     }
 
-    const handleShowProfile = () =>{
+    const handleShowProfile = () => {
         setShowProfile(!showProfile);
     }
 
@@ -47,8 +47,8 @@ const BrowseHeader = () => {
         });
     }, [])
 
-    if(!user) return;
-    const { displayName, email } = user; 
+    if (!user) return;
+    const { displayName, email } = user;
     const name = displayName;
     const userEmail = email;
 
@@ -61,17 +61,24 @@ const BrowseHeader = () => {
 
             {user &&
                 <div className='flex item gap-5'>
-                    
-                    
                     <button className='mt-5 flex flex-col items-center' onClick={() => handleShowProfile()}>
-                        {showProfile? '' : <img src={user.photoURL} alt="user icon" className='w-10' />}
-                        {!showProfile? '' : <div  className='mt-10 flex flex-col items-center bg-red-600 px-10 py-2 rounded-xl text-white'>
-                            <button className=' text-end' onClick={() => handleShowProfile()} ><RiArrowUpWideFill className="text-4xl w-8 h-8" /></button>
-                            <p>Account Owner: {name} </p>
-                            <p>Email: {userEmail}</p>
-                            <button onClick={() => handleSignOut()} className=' bg-red-600 text-white font-semibold px-5 py-1 rounded-md h-11 mt-5 hover:bg-red-500 transition-colors duration-300'>Sign out</button>
-                        </div>}
-                        
+                        {showProfile ? '' : <img src={user.photoURL} alt="user icon" className='w-10' />}
+                        {!showProfile ? '' :
+                            <div className='mt-10 flex flex-col items-center bg-red-600 px-4 py-2 rounded-xl text-white
+                absolute right-0 top-14 z-10
+                 sm:px-6 md:px-8 lg:px-10 xl:px-12
+                 sm:py-3 md:py-4 lg:py-5 xl:py-6'>
+                                <p className='font-medium mt-2'>Account Owner: {name}</p>
+                                <p className='text-sm mb-2'>Email: {userEmail}</p>
+                                <button onClick={() => handleSignOut()}
+                                    className='bg-red-600 text-white font-semibold px-4 py-2 rounded-md mt-3
+                       hover:bg-red-500 transition-colors duration-300'>
+                                    Sign out
+                                </button>
+                            </div>
+                        }
+
+
                     </button>
                 </div>
             }

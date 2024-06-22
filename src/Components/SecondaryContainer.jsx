@@ -7,7 +7,7 @@ const SecondaryContainer = () => {
   GetMoviesByPopularityHook();
 
   return (
-    <div>
+    <div className='flex flex-col gap-10'>
       <PopularMovies/>
     </div>
   )

@@ -69,11 +69,10 @@ const BrowseHeader = () => {
                             <button className=' text-end' onClick={() => handleShowProfile()} ><RiArrowUpWideFill className="text-4xl w-8 h-8" /></button>
                             <p>Account Owner: {name} </p>
                             <p>Email: {userEmail}</p>
+                            <button onClick={() => handleSignOut()} className=' bg-red-600 text-white font-semibold px-5 py-1 rounded-md h-11 mt-5 hover:bg-red-500 transition-colors duration-300'>Sign out</button>
                         </div>}
+                        
                     </button>
-
-
-                    <button onClick={() => handleSignOut()} className=' bg-red-600 text-white font-semibold px-5 py-1 rounded-md h-11 mt-5 hover:bg-red-500 transition-colors duration-300'>Sign out</button>
                 </div>
             }
 

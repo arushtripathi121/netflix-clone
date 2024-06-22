@@ -5,9 +5,9 @@ import SecondaryContainer from './SecondaryContainer';
 
 const VideoTitle = ({ title, overview }) => {
   return (
-    <div className="absolute space-y-5 mt-20 text-white w-full aspect-video bg-gradient-to-b from-transparent to-black">
-      <div className='px-20  space-y-10'>
-        <p className=' text-5xl font-bold mt-40'>{title}</p>
+    <div className="absolute space-y-5 mt-64 text-white w-full aspect-video bg-gradient-to-b from-transparent to-black">
+      <div className=' px-20'>
+        <p className=' text-5xl font-bold'>{title}</p>
         <p className='w-96'>{overview}</p>
       </div>
 

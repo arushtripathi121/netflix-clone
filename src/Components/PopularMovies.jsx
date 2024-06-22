@@ -42,17 +42,28 @@ const PopularMovies = () => {
 
   return (
     <div>
-      <p className='text-2xl font-semibold ml-8 mt-5'>Movies you may like</p>
-      <div className='flex flex-row items-center gap-5' >
-        <button className=' bg-gray-600 text-white px-1 opacity-60' onClick={() => onHandleClick('right')}><FaChevronLeft className='h-20' /></button>
-        <div className='flex flex-row gap-5'>
+      <p className='text-2xl font-semibold ml-10 mt-10'>Movies you may like</p>
+      <div className='flex flex-row gap-5 items-center'>
+        <button
+          className='bg-gray-600 text-white px-1 opacity-60 transition duration-300 ease-in-out hover:opacity-100 transform hover:scale-110'
+          onClick={() => onHandleClick('right')}
+        >
+          <FaChevronLeft className='h-20' />
+        </button>
+        <div className='flex flex-row gap-5 mt-5'>
           {popularMoviesResults.slice(currentIndex, nextIndex).map((movie, index) => (
-            <MovieContainer key={index} poster={movie.poster_path} />
+            <MovieContainer key={index} poster={movie.backdrop_path} />
           ))}
         </div>
-        <button onClick={() => onHandleClick('left')} className=' bg-gray-600 text-white px-1 opacity-60'><FaChevronRight className='h-20' /></button>
+        <button
+          onClick={() => onHandleClick('left')}
+          className='bg-gray-600 text-white px-1 opacity-60 transition duration-300 ease-in-out hover:opacity-100 transform hover:scale-110'
+        >
+          <FaChevronRight className='h-20' />
+        </button>
       </div>
     </div>
+
   );
 };
 

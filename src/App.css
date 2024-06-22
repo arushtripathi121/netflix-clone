@@ -19,7 +19,7 @@
 
 .browse{
   background-image: url('https://th.bing.com/th/id/R.b8414fd6cf0573f8d86c3d8dc7183e04?rik=HYgdPRWH8vQQ6w&riu=http%3a%2f%2fwallpapercave.com%2fwp%2fK0HCxt0.jpg&ehk=3OdT%2fHjlxJ%2f08TjGkoc9qNk7IYOPzwyDeGZt5OzqFMA%3d&risl=&pid=ImgRaw&r=0');
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat; */
   background-blend-mode: multiply; /* Blend the background image and color */
 }
 

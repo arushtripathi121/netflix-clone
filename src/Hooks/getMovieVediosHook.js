@@ -5,8 +5,8 @@ import { addTrailerVideo } from "../utils/movieSlice";
 import { API_OPTIONS } from "../utils/Constants";
 
 const GetMovieVediosHook = ({ movieId }) => {
-    const dispatch = useDispatch();
-    const getMovieVideos = async () => {
+     const dispatch = useDispatch();
+     const getMovieVideos = async () => {
       const data = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos`, API_OPTIONS);
       const json = await data.json();
       // console.log(json);

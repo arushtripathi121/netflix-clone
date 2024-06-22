@@ -5,6 +5,7 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 const BrowseMovies = ({ MoviesResults, title }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  
 
   const onHandleClick = (direction) => {
     if (isAnimating) return;
@@ -54,7 +55,7 @@ const BrowseMovies = ({ MoviesResults, title }) => {
             {MoviesResults.slice(0, 20).map((movie, index) => (
               <div key={index} className='w-64 flex-shrink-0 p-1'>
                 <div>
-                  <MovieContainer poster={movie.poster_path} id={movie.id} />
+                  <MovieContainer poster={movie.poster_path} id={movie.id} mode={movie.media_type} />
                 </div>
               </div>
             ))}

@@ -1,13 +1,10 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Browse from './Browse';
 import { createBrowserRouter } from 'react-router-dom';
 import { RouterProvider } from 'react-router-dom';
 import LoginPage from './LoginPage';
 import HomePage from './HomePage';
-import { useDispatch } from 'react-redux';
 import MoviesInfoPage from './MoviesInfoPage';
-import MovieContainer from './MovieContainer';
-import VideoPlayer from './VideoPlayer';
 const Body = () => {
 
 
@@ -27,10 +24,7 @@ const Body = () => {
     {
       path: 'movies/:mode/:id',
       element: <MoviesInfoPage/>
-    },{
-      path: 'watch/:id',
-      element: <VideoPlayer/>
-    }
+    },
   ]);
 
   return (

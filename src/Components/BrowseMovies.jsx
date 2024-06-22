@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import MovieContainer from './MovieContainer';
-import { useSelector } from 'react-redux';
-import { BiArrowToLeft } from 'react-icons/bi';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-const PopularMovies = () => {
-  const popularMoviesResults = useSelector(store => store.popularMovies?.currentlyPopularMovies);
+
+
+const BrowseMovies = ({MoviesResults}) => {
+  
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [nextIndex, setNextIndex] = useState(5);
@@ -38,7 +38,7 @@ const PopularMovies = () => {
     console.log(nextIndex);
   }
 
-  if (popularMoviesResults == null) return null; // Return early if popularMoviesResults is null or undefined
+  if (MoviesResults == null) return null; // Return early if popularMoviesResults is null or undefined
 
   return (
     <div>
@@ -51,7 +51,7 @@ const PopularMovies = () => {
           <FaChevronLeft className='h-20' />
         </button>
         <div className='flex flex-row gap-5 mt-5'>
-          {popularMoviesResults.slice(currentIndex, nextIndex).map((movie, index) => (
+          {MoviesResults.slice(currentIndex, nextIndex).map((movie, index) => (
             <MovieContainer key={index} poster={movie.backdrop_path} />
           ))}
         </div>
@@ -67,5 +67,5 @@ const PopularMovies = () => {
   );
 };
 
-export default PopularMovies;
+export default BrowseMovies;
 

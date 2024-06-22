@@ -1,5 +1,5 @@
 import React from 'react'
-import PopularMovies from './PopularMovies'
+import BrowseMovies from './BrowseMovies'
 
 const TertiaryContainer = () => {
   return (

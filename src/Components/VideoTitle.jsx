@@ -1,29 +1,30 @@
-import React from 'react'
+import React from 'react';
 import { AiOutlineExclamationCircle } from 'react-icons/ai';
 import { FaPlay } from "react-icons/fa";
 import SecondaryContainer from './SecondaryContainer';
 
 const VideoTitle = ({ title, overview }) => {
   return (
-    <div className="absolute space-y-5 mt-64 text-white w-full aspect-video bg-gradient-to-b from-transparent to-black">
-      <div className=' px-20'>
-        <p className=' text-5xl font-bold'>{title}</p>
-        <p className='w-96'>{overview}</p>
+    <div className="absolute space-y-5 mt-80 text-white w-full bg-gradient-to-b from-transparent to-black">
+      <div className='px-20 space-y-5'>
+        <p className='text-5xl font-bold'>{title}</p>
+        <p className='w-2/5'>{overview}</p>
       </div>
 
-
-      <div className=' px-20  flex flex-row gap-5 text-xl'>
-        <button className='flex flex-row items-center gap-3 bg-white text-black px-3 py-2 font-semibold'> <FaPlay /> Play</button>
-        <button className='flex flex-row items-center gap-3 bg-gray-500 text-white px-3 py-2 font-semibold'><AiOutlineExclamationCircle />More Info</button>
+      <div className='px-20 flex flex-row gap-5 text-xl'>
+        <button className='flex flex-row items-center gap-3 bg-white text-black px-5 py-3 rounded-lg font-semibold transition duration-300 ease-in-out hover:bg-gray-300'>
+          <FaPlay /> Play
+        </button>
+        <button className='flex flex-row items-center gap-3 bg-gray-700 text-white px-5 py-3 rounded-lg font-semibold transition duration-300 ease-in-out hover:bg-gray-600'>
+          <AiOutlineExclamationCircle /> More Info
+        </button>
       </div>
 
-      <div className="flex justify-center items-center">
-        <div>
-          <SecondaryContainer />
-        </div>
+      <div className="mt-5 w-screen">
+        <SecondaryContainer />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default VideoTitle
+export default VideoTitle;

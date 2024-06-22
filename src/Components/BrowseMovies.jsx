@@ -54,7 +54,7 @@ const BrowseMovies = ({ MoviesResults, title }) => {
             {MoviesResults.slice(0, 20).map((movie, index) => (
               <div key={index} className='w-64 flex-shrink-0 p-1'>
                 <div>
-                  <MovieContainer poster={movie.poster_path} />
+                  <MovieContainer poster={movie.poster_path} id={movie.id} />
                 </div>
               </div>
             ))}

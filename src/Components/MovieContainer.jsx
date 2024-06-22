@@ -1,13 +1,13 @@
 import React from 'react'
 
-const MovieContainer = ({poster}) => {
+const MovieContainer = ({poster, id}) => {
 
 
     return (
         <div>
-            <div>
-                <img className='w-4/5 h-auto' src={`https://image.tmdb.org/t/p/w500/${poster}`} alt="no" />
-            </div>
+            <button>
+                <img src={`https://image.tmdb.org/t/p/w500/${poster}`} alt="no" />
+            </button>
         </div>
     )
 }

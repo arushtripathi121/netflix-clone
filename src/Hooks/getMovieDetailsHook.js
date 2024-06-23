@@ -1,33 +1,40 @@
 import { useEffect } from "react";
 import { API_OPTIONS } from "../utils/Constants";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addMovieForDisplay } from "../utils/movieSlice";
+import { useNavigate } from "react-router-dom";
 
 const useGetMovieDetailsHook = (id, mode) => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const user = useSelector(store => store.user?.user);
+    
+    const FetchDetails = () => {
+        if (user != null) {
+            let endpoint = '';
 
-    const fetchDetails = () => {
-        let endpoint = '';
+            if (mode === 'movie') {
+                endpoint = `https://api.themoviedb.org/3/movie/${id}?language=en-US`;
+            } else if (mode === 'tv') {
+                endpoint = `https://api.themoviedb.org/3/tv/${id}?language=en-US`;
+            } else {
+                endpoint = `https://api.themoviedb.org/3/movie/${id}?language=en-US`;
+            }
 
-        if (mode === 'movie') {
-            endpoint = `https://api.themoviedb.org/3/movie/${id}?language=en-US`;
-        } else if (mode === 'tv') {
-            endpoint = `https://api.themoviedb.org/3/tv/${id}?language=en-US`;
+            fetch(endpoint, API_OPTIONS)
+                .then(data => data.json())
+                .then(json => {
+                    dispatch(addMovieForDisplay(json)); 
+                })
+                .catch(error => console.error('Error fetching movie details:', error));
         } else {
-            endpoint = `https://api.themoviedb.org/3/movie/${id}?language=en-US`;
+            navigate('/browse');
         }
-
-        fetch(endpoint, API_OPTIONS)
-            .then(data => data.json())
-            .then(json => {
-                dispatch(addMovieForDisplay(json)); // Assuming the entire json is the movie details
-            })
-            .catch(error => console.error('Error fetching movie details:', error));
     };
 
     useEffect(() => {
-        fetchDetails();
-    }, [id, mode]); // Add id and mode as dependencies
+        FetchDetails();
+    }, [id, mode]);
 };
 
 export default useGetMovieDetailsHook;

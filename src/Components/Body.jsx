@@ -6,6 +6,7 @@ import LoginPage from './LoginPage';
 import HomePage from './HomePage';
 import MoviesInfoPage from './MoviesInfoPage';
 import MovieGPT from './MovieGPT';
+import ErrorPage from './ErrorPage';
 const Body = () => {
 
 
@@ -28,7 +29,11 @@ const Body = () => {
     },{
       path: '/movieRecomendatationSystem',
       element: <MovieGPT/>
-    }
+    },
+    {
+    path: '/error',
+    element: <ErrorPage/>
+    },
   ]);
 
   return (

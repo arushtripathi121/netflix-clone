@@ -15,6 +15,7 @@ const MoviesInfoPage = () => {
     const user = useSelector(store => store.user);
     const [isFullscreen, setIsFullscreen] = useState(false);
     const videoRef = useRef(null);
+    const [navi, setNavi] = useState(false);
 
     const handlePlay = () => {
         if (videoRef.current) {
@@ -50,17 +51,30 @@ const MoviesInfoPage = () => {
         };
     }, []);
 
-    if (!results || !video) return null;
+    if (page == 'movieGPT') {
+        setNavi(!navi);
+        console.log(navi);
+    }
+
+    if (!results) return null;
     const { backdrop_path, poster_path, original_title, vote_average, overview, origin_country, original_language, adult, runtime, release_date, tagline } = results;
-    const { key } = video;
+    const videoKey = video ? video.key : null;
+
 
     return (
         <div className='browse aspect-video px-4 py-4 md:px-20 md:py-10'>
-            <Link to={'/browse'}>
-                <p className='mb-10'>
-                    <IoCloseSharp className='text-white w-10 h-auto' />
-                </p>
-            </Link>
+            {
+                navi ? <Link to={'/movieRecomendatationSystem'}>
+                    <p className='mb-10'>
+                        <IoCloseSharp className='text-white w-10 h-auto' />
+                    </p>
+                </Link> :
+                    <Link to={'/browse'}>
+                        <p className='mb-10'>
+                            <IoCloseSharp className='text-white w-10 h-auto' />
+                        </p>
+                    </Link>
+            }
             <div className='border border-gray-500 text-white flex flex-col md:flex-row gap-6 p-5 rounded-lg'>
                 <div className='flex-shrink-0'>
                     <img className='w-full md:w-[200px] lg:w-[400px] xl:w-[450px] h-auto object-cover rounded-lg' src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt="Movie Poster" />
@@ -89,18 +103,20 @@ const MoviesInfoPage = () => {
                     </button>
                 </div>
             </div>
-            <div style={{ display: isFullscreen ? 'block' : 'none' }}>
+            { videoKey &&
+                <div style={{ display: isFullscreen ? 'block' : 'none' }}>
                 <iframe
                     ref={videoRef}
                     width="560"
                     height="315"
-                    src={`https://www.youtube.com/embed/${key}`}
+                    src={`https://www.youtube.com/embed/${videoKey}`}
                     title="YouTube video player"
                     frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                 ></iframe>
             </div>
+            }
         </div>
     );
 };

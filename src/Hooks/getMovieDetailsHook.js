@@ -28,7 +28,7 @@ const useGetMovieDetailsHook = (id, mode, page) => {
                 .catch(error => console.error('Error fetching movie details:', error));
         }
         else {
-            navigate('/browse')
+            navigate('/error')
         }
     };
 

@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux';
 import GetMovieDisplayVideo from '../Hooks/GetMovieDisplayVideo';
 import { IoCloseSharp } from 'react-icons/io5';
 import { BiPlay } from 'react-icons/bi';
-import ErrorPage from './ErrorPage';
 
 const MoviesInfoPage = () => {
     const { id, mode, page } = useParams();

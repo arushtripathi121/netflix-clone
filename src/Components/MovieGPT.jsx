@@ -53,6 +53,11 @@ const MovieGPT = () => {
                         <BrowseMovies MoviesResults={results} title={`Results for: ${search}`} movieGPT={'movieGPT'} />
                     </div>
                 }
+
+                {
+                    results.length == 0 &&
+                    <p  className=" px-32 w-full mt-6">Loading.....</p>
+                }
             </div>
         </div>
     );

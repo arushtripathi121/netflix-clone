@@ -15,7 +15,6 @@ const MoviesInfoPage = () => {
     const user = useSelector(store => store.user);
     const [isFullscreen, setIsFullscreen] = useState(false);
     const videoRef = useRef(null);
-    const [navi, setNavi] = useState(false);
 
     const handlePlay = () => {
         if (videoRef.current) {
@@ -51,16 +50,12 @@ const MoviesInfoPage = () => {
         };
     }, []);
 
-    if (page == 'movieGPT') {
-        setNavi(!navi);
-        console.log(navi);
-    }
 
     if (!results) return null;
     const { backdrop_path, poster_path, original_title, vote_average, overview, origin_country, original_language, adult, runtime, release_date, tagline } = results;
     const videoKey = video ? video.key : null;
 
-
+    const navi = page ? 'movieGPT' : null;
     return (
         <div className='browse aspect-video px-4 py-4 md:px-20 md:py-10'>
             {

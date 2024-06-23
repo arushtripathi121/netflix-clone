@@ -1,69 +1,81 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import MovieContainer from './MovieContainer';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 const BrowseMovies = ({ MoviesResults, title }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
+  const [itemsPerPage, setItemsPerPage] = useState(5);
 
-  const totalMovies = MoviesResults ? MoviesResults.length : 0; // Ensure MoviesResults is not null
+  useEffect(() => {
+    const updateItemsPerPage = () => {
+      if (window.innerWidth >= 1280) {
+        setItemsPerPage(5);
+      } else if (window.innerWidth >= 1024) {
+        setItemsPerPage(4);
+      } else if (window.innerWidth >= 768) {
+        setItemsPerPage(3);
+      } else if (window.innerWidth >= 640) {
+        setItemsPerPage(2);
+      } else {
+        setItemsPerPage(1);
+      }
+    };
+
+    window.addEventListener('resize', updateItemsPerPage);
+    updateItemsPerPage();
+
+    return () => window.removeEventListener('resize', updateItemsPerPage);
+  }, []);
+
+  const totalMovies = MoviesResults ? MoviesResults.length : 0;
 
   const onHandleClick = (direction) => {
-    if (isAnimating) return;
-    setIsAnimating(true);
-
-    const maxIndex = Math.max(totalMovies - 5, 0); // Ensure maxIndex doesn't go negative
+    const maxIndex = Math.max(totalMovies - itemsPerPage, 0);
 
     if (direction === 'left') {
-      setCurrentIndex(prevIndex => (prevIndex <= 0 ? maxIndex : prevIndex - 5));
+      setCurrentIndex((prevIndex) => (prevIndex <= 0 ? maxIndex : prevIndex - 1));
     } else if (direction === 'right') {
-      setCurrentIndex(prevIndex => (prevIndex >= maxIndex ? 0 : prevIndex + 5));
+      setCurrentIndex((prevIndex) => (prevIndex >= maxIndex ? 0 : prevIndex + 1));
     }
-
-    setTimeout(() => {
-      setIsAnimating(false);
-    }, 500); // Duration should match the CSS transition duration
   };
 
-  if (!MoviesResults) return null; // Render nothing if MoviesResults is null or undefined
+  if (!MoviesResults) return null;
 
   return (
-    <div className="mx-auto container mt-10">
-      <p className='text-2xl font-semibold mb-5 ml-5'>{title}</p>
-      <div className='flex items-center relative'>
-        {/* Left arrow button */}
-        <button
-          className='absolute left-0 bg-gray-600 text-white p-3 rounded-full opacity-60 transition duration-300 ease-in-out hover:opacity-100 transform hover:scale-110 z-10'
-          onClick={() => onHandleClick('left')}
-        >
-          <FaChevronLeft className='h-6 w-6' />
-        </button>
-
-        {/* Movie carousel container */}
-        <div className='overflow-hidden flex-grow mx-5'>
-          <div
-            className={`flex transition-transform duration-500 ease-in-out`}
-            style={{ transform: `translateX(-${currentIndex * (100 / 8)}%)` }}
+    <div className="mx-auto container mt-10 px-4">
+      <p className="text-2xl font-semibold mb-5">{title}</p>
+      <div className="relative flex items-center">
+        {currentIndex > 0 && (
+          <button
+            className="absolute left-0 bg-gray-600 text-white p-3 rounded-full opacity-60 transition duration-300 ease-in-out hover:opacity-100 transform hover:scale-110 z-10"
+            onClick={() => onHandleClick('left')}
           >
-            {/* Displaying all movies */}
+            <FaChevronLeft className="h-6 w-6" />
+          </button>
+        )}
+        <div className="overflow-hidden flex-grow mx-5">
+          <div
+            className="flex transition-transform duration-500 ease-in-out"
+            style={{ transform: `translateX(-${currentIndex * (100 / itemsPerPage)}%)` }}
+          >
             {MoviesResults.map((movie, index) => (
-              <div key={index} className='w-64 flex-shrink-0 p-1'>
-                <div>
-                  {/* Using MovieContainer component */}
-                  <MovieContainer poster={movie.poster_path} id={movie.id} mode={movie.media_type} />
-                </div>
+              <div
+                key={index}
+                className="flex-shrink-0 p-1 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5"
+              >
+                <MovieContainer poster={movie.poster_path} id={movie.id} mode={movie.media_type} />
               </div>
             ))}
           </div>
         </div>
-
-        {/* Right arrow button */}
-        <button
-          className='absolute right-0 bg-gray-600 text-white p-3 rounded-full opacity-60 transition duration-300 ease-in-out hover:opacity-100 transform hover:scale-110 z-10'
-          onClick={() => onHandleClick('right')}
-        >
-          <FaChevronRight className='h-6 w-6' />
-        </button>
+        {currentIndex < Math.max(totalMovies - itemsPerPage, 0) && (
+          <button
+            className="absolute right-0 bg-gray-600 text-white p-3 rounded-full opacity-60 transition duration-300 ease-in-out hover:opacity-100 transform hover:scale-110 z-10"
+            onClick={() => onHandleClick('right')}
+          >
+            <FaChevronRight className="h-6 w-6" />
+          </button>
+        )}
       </div>
     </div>
   );

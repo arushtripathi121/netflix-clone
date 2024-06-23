@@ -24,7 +24,7 @@ const Body = () => {
       element: <LoginPage />
     },
     {
-      path: 'movies/:mode/:id',
+      path: 'movies/:page/:mode/:id',
       element: <MoviesInfoPage/>
     },{
       path: '/movieRecomendatationSystem',

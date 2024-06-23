@@ -8,9 +8,8 @@ import { BiPlay } from 'react-icons/bi';
 import ErrorPage from './ErrorPage';
 
 const MoviesInfoPage = () => {
-    const { id, mode } = useParams();
-
-    GetMovieDetailsHook(id, mode);
+    const { id, mode, page } = useParams();
+    GetMovieDetailsHook(id, mode, page);
     const video = GetMovieDisplayVideo(id, mode);
     const results = useSelector((store) => store.movies?.movieForDisplay);
     const user = useSelector(store => store.user);

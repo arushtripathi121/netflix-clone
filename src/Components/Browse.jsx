@@ -6,16 +6,20 @@ import TertiaryContainer from './TertiaryContainer';
 
 const Browse = () => {
   useNowPlayingHook();
+
   return (
-    <div className='browse relative'>
-      <div className='absolute top-0 left-0  w-full bg-gradient-to-b from-black to-transparent'>
-        <BrowseHeader />
-      </div>
-      <div className=''>
-        <MainContainer />
-      </div>
-      <TertiaryContainer/>
+    <div>
+        <div className='browse relative'>
+          <div className='absolute top-0 left-0  w-full bg-gradient-to-b from-black to-transparent'>
+            <BrowseHeader />
+          </div>
+          <div className=''>
+            <MainContainer />
+          </div>
+          <TertiaryContainer />
+        </div>
     </div>
+
 
   )
 }

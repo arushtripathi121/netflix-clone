@@ -5,6 +5,7 @@ import { RouterProvider } from 'react-router-dom';
 import LoginPage from './LoginPage';
 import HomePage from './HomePage';
 import MoviesInfoPage from './MoviesInfoPage';
+import MovieGPT from './MovieGPT';
 const Body = () => {
 
 
@@ -24,7 +25,10 @@ const Body = () => {
     {
       path: 'movies/:mode/:id',
       element: <MoviesInfoPage/>
-    },
+    },{
+      path: '/movieRecomendatationSystem',
+      element: <MovieGPT/>
+    }
   ]);
 
   return (

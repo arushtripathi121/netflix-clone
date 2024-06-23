@@ -14,7 +14,7 @@ const SecondaryContainer = () => {
   return (
     <div className='flex flex-col gap-5 sm:gap-10 px-4 sm:px-8 md:px-12 lg:px-20'>
       {/* BrowseMovies Component */}
-      <BrowseMovies MoviesResults={movies} title={'Movies to Watch'} />
+      <BrowseMovies MoviesResults={movies} title={'Top Rated Movies'} />
     </div>
   );
 };

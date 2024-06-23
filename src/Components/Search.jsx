@@ -1,18 +1,32 @@
-import React from 'react'
-import { BiSearch } from 'react-icons/bi'
+import React, { useState } from 'react';
+import { BiSearch } from 'react-icons/bi';
+import GetMovieslIstHook from '../Hooks/GetMovieslIstHook';
 
 const Search = () => {
-    return (
-        <div className=' w-[600px]'>
-            <form className='flex  gap-2'>
-                <input className='w-full border border-white text-white font-bold px-4 py-3 rounded-lg opacity-50 bg-black' type='text' placeholder='Enter Movie or Series'>
-                </input>
-                <button>
-                    <p className='text-black flex items-center text-xl bg-white rounded=lg font-bold px-2 py-1'><BiSearch className='w-6 h-auto' />Search</p>
-                </button>
-            </form>
-        </div>
-    )
-}
+    const [search, setSearch] = useState('');
+    GetMovieslIstHook(search);
 
-export default Search
+    const handleChange = (e) => {
+        setSearch(e.target.value);
+    };
+
+    return (
+        <div className="max-w-screen-lg mx-auto px-4 sm:px-6 md:px-8">
+            <div className="relative mt-6">
+                <span className="absolute inset-y-0 left-0 flex items-center pl-3">
+                    <BiSearch className="h-5 w-5 text-gray-500" />
+                </span>
+                <input
+                    value={search}
+                    onChange={handleChange}
+                    className="block w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg shadow-sm text-black font-serif font-bold focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    type="text"
+                    placeholder="Search movies or series..."
+                />
+            </div>
+        </div>
+    );
+};
+
+export default Search;
+

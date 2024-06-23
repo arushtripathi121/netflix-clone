@@ -60,26 +60,31 @@ const BrowseHeader = () => {
             </Link>
 
             {user &&
-                <div className='flex flex-row items-center gap-10'>
-                    <Link to={'/movieRecomendatationSystem'}><div className='text-white bg-red-600 px-2 py-2 rounded-lg mt-5'>Movie Recomendation System</div></Link>
-                    <div className='flex'>
-                        <button className='mt-5 flex flex-col items-center' onClick={() => handleShowProfile()}>
-                            {showProfile ? '' : <img src={user.photoURL} alt="user icon" className='w-10' />}
-                            {!showProfile ? '' :
-                                <div className='mt-10 flex flex-col items-center bg-red-600 px-4 py-2 rounded-xl text-white absolute right-0 top-14 z-10 sm:px-6 md:px-8 lg:px-10 xl:px-12 sm:py-3 md:py-4 lg:py-5 xl:py-6'>
-                                    <p className='font-medium mt-2'>Account Owner: {name}</p>
-                                    <p className='text-sm mb-2'>Email: {userEmail}</p>
-                                    <button onClick={() => handleSignOut()}
-                                        className='bg-red-600 text-white font-semibold px-4 py-2 rounded-md mt-3 hover:bg-red-500 transition-colors duration-300'>
+                <div className="flex flex-row items-center gap-4 sm:gap-6 md:gap-8 lg:gap-10">
+                    <Link to={'/movieRecomendatationSystem'}>
+                        <div className="text-white bg-red-600 px-2 py-1 sm:px-1 sm:py-2 md:px-4 md:py-2 lg:px-5 lg:py-3 rounded-lg mt-2 sm:mt-3 md:mt-4 lg:mt-5 text-xs sm:text-sm md:text-base lg:text-lg">
+                            Movie Recommendation System
+                        </div>
+                    </Link>
+                    <div className="relative flex">
+                        <button className="mt-2 sm:mt-3 md:mt-4 lg:mt-5 flex flex-col items-center" onClick={() => handleShowProfile()}>
+                            {!showProfile && <img src={user.photoURL} alt="user icon" className="w-8 sm:w-10 md:w-12 lg:w-14" />}
+                            {showProfile && (
+                                <div className="mt-10 flex flex-col items-center bg-red-600 px-4 py-2 rounded-xl text-white absolute right-0 top-14 z-10 sm:px-6 md:px-8 lg:px-10 xl:px-12 sm:py-3 md:py-4 lg:py-5 xl:py-6">
+                                    <p className="font-medium mt-2">Account Owner: {name}</p>
+                                    <p className="text-sm mb-2">Email: {userEmail}</p>
+                                    <button
+                                        onClick={() => handleSignOut()}
+                                        className="bg-red-600 text-white font-semibold px-4 py-2 rounded-md mt-3 hover:bg-red-500 transition-colors duration-300"
+                                    >
                                         Sign out
                                     </button>
                                 </div>
-                            }
-
-
+                            )}
                         </button>
                     </div>
                 </div>
+
             }
 
         </div>

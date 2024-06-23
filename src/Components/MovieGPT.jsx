@@ -2,19 +2,27 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { IoCloseSharp } from 'react-icons/io5';
 import Search from './Search';
+import { useSelector } from 'react-redux';
 
 const MovieGPT = () => {
+
+    const movieList = useSelector(store.movie?.recomendedMovies);
+
     return (
-        <div className='browse w-screen min-h-screen flex flex-col'>
-            <div className='fixed top-0 right-0 m-4'>
-                <Link to={'/browse'}>
-                    <IoCloseSharp className='w-10 h-auto text-white' />
+        <div className='bg-gray-900 text-white min-h-screen'>
+            {/* Close Button */}
+            <div className='fixed top-4 right-4 z-50'>
+                <Link to='/browse'>
+                    <IoCloseSharp className='w-10 h-10 text-white hover:text-red-400 transition duration-300' />
                 </Link>
             </div>
 
-            <div className='flex flex-col items-center mt-20'>
-                <p className=' text-red-400 opacity-70 font-bold text-7xl mb-10 font-serif italic'>CineSuggest</p>
-                <div className='mb-4'><Search /></div>
+            {/* Main Content */}
+            <div className='flex flex-col items-center justify-center h-full'>
+                <p className='text-red-400 font-bold text-5xl mb-8 font-serif italic'>CineSuggest</p>
+                <div className='w-full max-w-md'>
+                    <Search />
+                </div>
             </div>
         </div>
     );

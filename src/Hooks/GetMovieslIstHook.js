@@ -23,7 +23,7 @@ const GetMovieslIstHook = (name) => {
     useEffect(() => {
         let timer = setTimeout(() => {
             fetchMovies(name)
-        }, 3000)
+        }, 100)
         return () => clearTimeout(timer);
     }, [name]);
 

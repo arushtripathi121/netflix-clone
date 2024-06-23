@@ -63,7 +63,7 @@ const BrowseHeader = () => {
                 <div className="flex flex-row items-center gap-4 sm:gap-6 md:gap-8 lg:gap-10">
                     <Link to={'/movieRecomendatationSystem'}>
                         <div className="text-white bg-red-600 px-2 py-1 sm:px-1 sm:py-2 md:px-4 md:py-2 lg:px-5 lg:py-3 rounded-lg mt-2 sm:mt-3 md:mt-4 lg:mt-5 text-xs sm:text-sm md:text-base lg:text-lg">
-                            Movie Recommendation System
+                            MovieGPT
                         </div>
                     </Link>
                     <div className="relative flex">

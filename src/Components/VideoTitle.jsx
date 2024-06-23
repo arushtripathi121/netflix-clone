@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom';
 
 const VideoTitle = ({ title, overview, movieId, mode }) => {
   return (
-    <div className="absolute space-y-5 mt-48 text-white w-full bg-gradient-to-b from-transparent to-black">
-      <div className='px-4 sm:px-8 md:px-12 lg:px-20 space-y-2'>
+    <div className="absolute space-y-5 mt-32 text-white w-full bg-gradient-to-b from-transparent to-black">
+      <div className='px-5 sm:px-8 md:px-12 lg:px-20 space-y-2'>
         <p className='text-3xl sm:text-2xl md:text-3xl font-bold'>{title}</p>
         <p className='text-base sm:text-lg md:text-xl w-3/6'>{overview}</p>
       </div>

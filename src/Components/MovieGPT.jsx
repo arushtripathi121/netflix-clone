@@ -50,7 +50,7 @@ const MovieGPT = () => {
             <div>
                 {results.length != 0 &&
                     <div className="w-full mt-6">
-                        <BrowseMovies MoviesResults={results} title={`Results for: ${search}`} movieGPT={'movieGPT'} />
+                        <BrowseMovies MoviesResults={results} title={`Results for: ${search}`} page={'true'} />
                     </div>
                 }
 

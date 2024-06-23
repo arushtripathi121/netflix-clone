@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import MovieContainer from './MovieContainer';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
-const BrowseMovies = ({ MoviesResults, title }) => {
+const BrowseMovies = ({ MoviesResults, title, page }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(5);
 
@@ -63,7 +63,7 @@ const BrowseMovies = ({ MoviesResults, title }) => {
                 key={index}
                 className="flex-shrink-0 p-1 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5"
               >
-                <MovieContainer poster={movie.poster_path} id={movie.id} mode={movie.media_type} />
+                <MovieContainer poster={movie.poster_path} id={movie.id} mode={movie.media_type} page={page} />
               </div>
             ))}
           </div>

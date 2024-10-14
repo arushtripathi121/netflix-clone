@@ -54,9 +54,20 @@ const BrowseHeader = () => {
     return (
         <div className='flex px-20 justify-between'>
 
-            <Link to={'/browse'}><img
-                src={netflixLogo}
-                className=' w-36' />
+            <Link to={'/browse'}> 
+            <div class="bg-black p-6 flex items-center space-x-2 bg-none bg-opacity-0">
+                    <div class="text-red-500 font-bold text-5xl">
+                        Cine
+                    </div>
+                    <div class="text-gray-300 font-bold text-5xl">
+                        Suggest
+                    </div>
+                    <div class="flex items-center justify-center w-8 h-8">
+                        <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 16l4-4m0 0l-4-4m4 4H8m8 0l-4-4m0 0l4-4m-4 4h8" />
+                        </svg>
+                    </div>
+                </div>
             </Link>
 
             {user &&

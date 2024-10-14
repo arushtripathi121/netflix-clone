@@ -23,12 +23,24 @@ const MovieGPT = () => {
         <div className='bg-gray-900 text-white min-h-screen'>
             {/* Close Button */}
             <div className='fixed top-4 right-4 z-50'>
-                    <Link to={'/browse'}><IoCloseSharp className='w-10 h-10 text-white hover:text-red-400 transition duration-300' /></Link>
+                <Link to={'/browse'}><IoCloseSharp className='w-10 h-10 text-white hover:text-red-400 transition duration-300' /></Link>
             </div>
 
             {/* Main Content */}
             <div className='flex flex-col items-center justify-center h-full'>
-                <p className='text-red-400 font-bold text-5xl mb-8 font-serif italic'>CineSuggest</p>
+                <div class="bg-black p-6 flex items-center space-x-2 bg-opacity-0">
+                    <div class="text-red-500 font-bold text-5xl">
+                        Cine
+                    </div>
+                    <div class="text-gray-300 font-bold text-5xl">
+                        Suggest
+                    </div>
+                    <div class="flex items-center justify-center w-8 h-8">
+                        <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 16l4-4m0 0l-4-4m4 4H8m8 0l-4-4m0 0l4-4m-4 4h8" />
+                        </svg>
+                    </div>
+                </div>
             </div>
 
             <div className='w-full max-w-md'>
@@ -56,7 +68,7 @@ const MovieGPT = () => {
 
                 {
                     results.length == 0 &&
-                    <p  className=" px-32 w-full mt-6">Loading.....</p>
+                    <p className=" px-32 w-full mt-6">Loading.....</p>
                 }
             </div>
         </div>

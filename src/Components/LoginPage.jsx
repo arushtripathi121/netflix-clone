@@ -126,7 +126,7 @@ const LoginPage = () => {
           </div>
           <button className=' rounded-sm bg-red-800  px-4 py-3 text-white' onClick={() => handleButtonClick()}>{isSignIn ? 'Sign up' : 'Sign in'}</button>
         </form>
-        <span className='text-white font-light'>{isSignIn ? 'Already a user? ' : 'New to Netflix? '}<button onClick={() => onButtonClick()} className=' text-white font-bold'>{isSignIn ? 'Sign in now' : ' Sign up now'}</button></span>
+        <span className='text-white font-light'>{isSignIn ? 'Already a user? ' : 'New to CineSuggest? '}<button onClick={() => onButtonClick()} className=' text-white font-bold'>{isSignIn ? 'Sign in now' : ' Sign up now'}</button></span>
         <p className=' text-red-500 w-72'>{ErrorMessage ? ErrorMessage : ''}</p>
       </div>
     </div>
